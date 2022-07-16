@@ -3,9 +3,11 @@ from models import *
 
 app = Flask(__name__)
 
+_LAYOUT = "_layout.html"
+
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template(_LAYOUT, title="Home", page="index")
 
 @app.route('/view', methods=['POST'])
 def view():
@@ -16,9 +18,9 @@ def view():
 
     scheduler = Scheduler(teams, locations)
     schedule = scheduler.schedule_games()
-    return render_template('view.html', schedule=schedule)
+    return render_template(_LAYOUT, page="view", title="View Schedule", schedule=schedule)
 
 @app.route('/create')
 def schedule():
-    return render_template('create.html')
+    return render_template(_LAYOUT, title="Create Schedule", page="create")
   
