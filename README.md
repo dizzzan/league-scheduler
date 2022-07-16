@@ -1,3 +1,5 @@
+[![Fly Deploy](https://github.com/dizzzan/league-scheduler/actions/workflows/main.yml/badge.svg)](https://github.com/dizzzan/league-scheduler/actions/workflows/main.yml)
+
 # Barebones Getting Started
 
 1. `git clone <this repository url>`
