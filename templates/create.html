@@ -1,16 +1,15 @@
 <form method="POST" action="/view">
-
-    <h4>Team names</h4>
-    <textarea name="teams" placeholder="Team names, comma separated"></textarea>
-
-    <h4>Available dates</h4>
-    <textarea name="dates" placeholder="Date/times, comma separated"></textarea>
-
-    <h4>Available locations</h4>
-    <textarea name="locations" placeholder="Location names, comma separated"></textarea>
-
-    <p>
-        <input type="submit" value="Create schedule" />
-    </p>
-
+    <div class="mb-3">
+        <label for="teams" class="form-label">Team names</label>
+        <input type="text" class="form-control" id="teams" name="teams" placeholder="team names, comma separated">
+    </div>
+    <div class="mb-3">
+        <label for="dates" class="form-label">Available dates</label>
+        <input type="text" class="form-control" id="dates" name="dates" placeholder="Date/times, comma separated">
+    </div>
+    <div class="mb-3">
+        <label for="locations" class="form-label">Locations</label>
+        <input type="text" class="form-control" id="locations" name="locations" placeholder="Locations, comma separated">
+        </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>

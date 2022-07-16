@@ -21,6 +21,6 @@ def view():
     return render_template(_LAYOUT, page="view", title="View Schedule", schedule=schedule)
 
 @app.route('/create')
-def schedule():
+def create():
     return render_template(_LAYOUT, title="Create Schedule", page="create")
   
