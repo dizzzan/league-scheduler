@@ -41,6 +41,3 @@ processes = []
 [[statics]]
   guest_path = "/app/static"
   url_prefix = "/static/"
-
-[build]
-  dockerfile = "scheduler/Dockerfile"
