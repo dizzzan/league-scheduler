@@ -5,3 +5,7 @@ itsdangerous
 Jinja2
 MarkupSafe
 Werkzeug
+varname
+psycopg2-binary
+Flask-SQLAlchemy
+Flask-Migrate
