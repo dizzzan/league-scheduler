@@ -1,4 +1,4 @@
-<form method="POST" action="/view">
+<form method="POST" action="{{ url_for('schedule.view') }}">
     <div class="mb-3">
         <label for="teams" class="form-label">Team names</label>
         <input type="text" class="form-control" id="teams" name="teams" placeholder="Team names, comma separated">

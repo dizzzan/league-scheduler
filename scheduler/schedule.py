@@ -1,6 +1,6 @@
 
 from flask import (
-    g, Blueprint, render_template, request, session, url_for, current_app
+    g, Blueprint, render_template, request, session, url_for, current_app, flash
 )
 from scheduler.db import get_db
 from scheduler.models import *
@@ -16,7 +16,11 @@ def view():
     places = list(map(lambda loc: Place(loc.strip(), schedule), request.form['places'].split(',')))
 
     scheduler = Scheduler(teams, places)
-    schedule = scheduler.schedule_games()
+    try:
+        schedule = scheduler.schedule_games()
+    except Exception as e:
+        flash(e)
+    
     return render_layout(page="view", schedule=schedule, title="View schedule")
 
 @bp.route('/create')

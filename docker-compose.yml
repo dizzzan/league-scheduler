@@ -4,11 +4,11 @@ services:
   app:
     image: web
     build:
-      context: scheduler
+      context: .
       dockerfile: Dockerfile
     command: ["sh", "-c", "pip install debugpy -t /tmp && python /tmp/debugpy --listen 0.0.0.0:5678 -m flask run --no-debugger --host 0.0.0.0 --port 8080"]
     volumes:
-      - ./scheduler:/app
+      - .:/app
     ports:
       - 8080:8080
       - 5678:5678

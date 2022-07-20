@@ -24,6 +24,5 @@ def create_app():
 
     return app
 
-
 def render_layout(**kwargs):
     return render_template(current_app.config['LAYOUT'], **kwargs)

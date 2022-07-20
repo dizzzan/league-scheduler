@@ -1,6 +1,6 @@
 from itertools import combinations
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from varname import nameof
 
@@ -10,7 +10,7 @@ class Team(db.Model):
     __tablename__ = "team"
     id = Column(Integer, primary_key=True)
     name = Column(String)
-
+    
     def __init__(self, name):
         self.name = name
     def __str__(self):
@@ -31,9 +31,12 @@ class Place(db.Model):
 class Game(db.Model):
     __tablename__ = "game"
     id = Column(Integer, primary_key=True)
-    team1 = relationship(nameof(Team))
-    team2 = relationship(nameof(Team))
+    team1_id = db.Column(Integer, ForeignKey('team.id'), nullable=False)
+    team1 = relationship(nameof(Team), foreign_keys=[team1_id])
+    team2_id = db.Column(Integer, ForeignKey('team.id'), nullable=False)
+    team2 = relationship(nameof(Team), foreign_keys=[team1_id])
     place = relationship(nameof(Place))
+    place_id = db.Column(Integer, ForeignKey('place.id'), nullable=False)
     time = Column(DateTime)
 
     def __init__(self, team1, team2, place, time):
@@ -60,4 +63,4 @@ class Scheduler:
         for l in self.place:
             if len(l.available_times) > 0:
                 return l, l.available_times.pop(0)
-        raise Exception("No more available timeslots!") 
+        raise Exception("Not enough available timeslots!") 
